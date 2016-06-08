@@ -204,7 +204,17 @@ var divide = function(x, y) {
 // http://www.cse.wustl.edu/~kjg/cse131/Notes/Recursion/recursion.html
 // https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm
 var gcd = function(x, y) {
-  
+  // Dijkstra's algorithm... very clever!
+  if(x===y){
+    return y;
+  } else if(x<0 || y<0){
+    return null
+  } else if(x>y){
+    return gcd(x-y, y)
+  } else{
+    return gcd(x, y-x)
+  }
+
 };
 
 // 15. Write a function that compares each character of two strings and returns true if
@@ -258,6 +268,7 @@ var countValuesInObj = function(obj, value) {
 // 23. Find all keys in an object (and nested objects) by a provided name and rename
 // them to a provided new name while preserving the value stored at that key.
 var replaceKeysInObj = function(obj, key, newKey) {
+
 };
 
 // 24. Get the first n Fibonacci numbers.  In the Fibonacci Sequence, each subsequent
