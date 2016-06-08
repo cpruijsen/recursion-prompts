@@ -94,7 +94,20 @@ var sumBelow = function(n, sum) {
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
-var range = function(x, y) {
+var range = function(x, y, result) {
+
+  var result = result || [];
+
+  if(x<y-1){
+    result.push(x+1);
+    return range(x+1, y, result);
+  }else if(x>y+1){
+    result.push(x-1);
+    return range(x-1, y, result);
+  }else{
+    return result;
+  }
+
 };
 
 // 7. Compute the exponent of a number.
