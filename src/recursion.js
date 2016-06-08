@@ -161,6 +161,7 @@ var reverse = function(string, arr, secondArr) {
     secondArr.push(arr.pop());
     return reverse(string, arr, secondArr);
   }
+  // TODO: fix. doesn't capture first character, has random +5 etc.
 };
 
 // 10. Write a function that determines if a string is a palindrome.
@@ -182,10 +183,8 @@ var multiply = function(x, y, counter, result) {
   var result = result || 0;
 
   if(counter<y && !(x<0&&y<0)){
-    // regular count up if both are not negative
     return multiply(x, y, counter+1, result+x);
   } else if(counter < -y){
-    // else we invert them both
     return multiply(-x, -y, counter+1, result-x);
   } else {
     return result;
@@ -214,7 +213,7 @@ var gcd = function(x, y) {
   } else{
     return gcd(x, y-x)
   }
-
+  // TODO could also implement Euclid's
 };
 
 // 15. Write a function that compares each character of two strings and returns true if
@@ -227,7 +226,16 @@ var compareStr = function(str1, str2) {
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
-var createArray = function(str){
+var createArray = function(str, count, res){
+  count = count || 0;
+  str = str.toLowerCase();
+  res = res || [];
+  if(count === str.length){
+    return res;
+  } else{
+    res.push(str.charAt(count));
+    return createArray(str, count+1, res);
+  }
 };
 
 // 17. Reverse the order of an array
@@ -313,6 +321,7 @@ var nestedEvenSum = function(obj) {
 // 29. Flatten an array containing nested arrays.
 // Example: flatten([1,[2],[3,[[4]]],5]); // [1,2,3,4,5]
 var flatten = function(arrays) {
+
 };
 
 // 30. Given a string, return an object containing tallies of each letter.
