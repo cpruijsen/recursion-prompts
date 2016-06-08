@@ -182,8 +182,10 @@ var multiply = function(x, y, counter, result) {
   var result = result || 0;
 
   if(counter<y && !(x<0&&y<0)){
+    // regular count up if both are not negative
     return multiply(x, y, counter+1, result+x);
   } else if(counter < -y){
+    // else we invert them both
     return multiply(-x, -y, counter+1, result-x);
   } else {
     return result;
@@ -193,6 +195,7 @@ var multiply = function(x, y, counter, result) {
 // 13. Write a function that divides two numbers without using the / operator  or
 // JavaScript's Math object.
 var divide = function(x, y) {
+  // cannot be attempted same way as multiply...
 };
 
 // 14. Find the greatest common divisor (gcd) of two positive numbers.  The GCD of two
@@ -201,6 +204,7 @@ var divide = function(x, y) {
 // http://www.cse.wustl.edu/~kjg/cse131/Notes/Recursion/recursion.html
 // https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm
 var gcd = function(x, y) {
+  
 };
 
 // 15. Write a function that compares each character of two strings and returns true if
