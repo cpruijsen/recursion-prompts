@@ -27,17 +27,69 @@ var sum = function(array, n) {
 
 // 3. Sum all numbers in an array containing nested arrays.
 // Example: arraySum([1,[2,3],[[4]],5]); // 15
-var arraySum = function(array) {
+var arraySum = function(array, n, sum) {
+
+  n = n || 0;
+  sum = sum || 0;
+  var result = 0;
+
+  if( array[n] !== undefined && !Array.isArray(array[n]) ){
+
+    return arraySum( array, n + 1, sum + array[n] );
+
+  } else if( Array.isArray(array[n]) ){
+// TODO: fix.
+
+    var childResult = arraySum( array[n], n );
+    result = result + childResult;
+    return result;
+
+  } else if (array[n] === undefined){
+
+    return sum;
+
+  }
+
 };
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+
+  // base case
+  if(n === 0 ){
+    return true;
+  }
+  else if( n > 1 ){
+    return isEven(n-2);
+  }
+  else if( n < 0 ){
+    return isEven(-n)
+  }
+  else if ( n === 1){
+    return false;
+  }
+
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
-var sumBelow = function(n) {
+var sumBelow = function(n, sum) {
+
+  n = n || 1;
+  sum = sum || 0;
+
+  if( n === 1 || n === 0){
+    // return the integers 'below' a given integer, so return 0 if n === 1 etc.
+    return sum;
+  } else if (n<0){
+    // count up in recursion
+    return sumBelow(n + 1, sum + n + 1);
+  } else {
+    // count down in recursion
+    return sumBelow(n - 1, sum + n-1 );
+  }
+
 };
 
 // 6. Get the integers in range (x, y).
